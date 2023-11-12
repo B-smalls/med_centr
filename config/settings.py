@@ -35,6 +35,10 @@ INSTALLED_APPS += [
 INSTALLED_APPS += [
     'api',
     'common',
+    'clients',
+    'doctors',
+    'medbooks',
+    'medservices',
 ]
 
 # documantion
