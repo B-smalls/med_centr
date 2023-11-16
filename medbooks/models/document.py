@@ -1,8 +1,9 @@
 from django.db import models
 
-from .medicalBook import MedBook
-
-class Conclusion(models.Model):
+class Document(models.Model):
     decription = models.TextField('decription')
     dock_path = models.TextField('dock_path')
-    date_download = models.DateField('concl_created')
+    date_download = models.DateField('dock_created')
+    mbook_id = models.ForeignKey(
+        'medbooks.MedBook', models.CASCADE
+    )
