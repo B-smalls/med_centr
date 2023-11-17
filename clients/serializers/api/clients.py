@@ -6,6 +6,8 @@ from medbooks.models.medicalBook import MedBook
 from django.db import transaction
 import random
 import string
+from django.utils import timezone
+
 
 User = get_user_model()
 
@@ -44,7 +46,7 @@ class RegistrationSerializer(serializers.Serializer):
                 MedBook.objects.create(
                     card_number=generate_medbook_number(),
                     status=True,
-                    date_created=user.birthday,
+                    date_created=timezone.now(),
                     account_id=user.id
                 )
         except Exception as e:
