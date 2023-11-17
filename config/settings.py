@@ -28,7 +28,8 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'rest_framework',
     'corsheaders',
-    'djoser'
+    'djoser',
+    'phonenumber_field'
 ]
 
 # apps
@@ -40,6 +41,12 @@ INSTALLED_APPS += [
     'medbooks',
     'medservices',
 ]
+#Custom user model
+AUTH_USER_MODEL = 'clients.Client'
+
+#Custom backend
+AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend',)
+
 
 # documantion
 INSTALLED_APPS += [
@@ -162,7 +169,6 @@ SPECTACULAR_SETTINGS = {
     ],
 
     'SERVE_AUTHENTICATION': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
 
@@ -211,3 +217,4 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=1),
     'SLIDING_TOKEN_REFREASH_LIFETIME': timedelta(days=7),
 }
+
