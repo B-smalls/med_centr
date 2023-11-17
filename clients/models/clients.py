@@ -17,7 +17,7 @@ class Client(AbstractUser):
     )
 
     USERNAME_FIELD = 'username'
-    REQUIARED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['email']
 
 
     @property

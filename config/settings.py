@@ -45,7 +45,7 @@ INSTALLED_APPS += [
 AUTH_USER_MODEL = 'clients.Client'
 
 #Custom backend
-AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend',)
+AUTHENTICATION_BACKENDS = ('clients.backends.AuthBackend',)
 
 
 # documantion
