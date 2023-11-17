@@ -12,7 +12,6 @@ User = get_user_model()
 class RegistrationSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
-
     class Meta:
         model = User
         fields = (
@@ -22,7 +21,6 @@ class RegistrationSerializer(serializers.Serializer):
             'email',
             'password',
         )
-
     def validate_email(self, value):
         email = value.lower()
         if User.objects.filter(email=email).exists():
@@ -30,7 +28,6 @@ class RegistrationSerializer(serializers.Serializer):
                 'Пользователь с такой почтой уже зарегистрирован.'
             )
         return email
-
     def validate_new_password(self, value):
         validate_password(value)
         return value
