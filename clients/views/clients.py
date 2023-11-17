@@ -1,10 +1,11 @@
 from django.contrib.auth import get_user_model
 from drf_spectacular.utils import extend_schema_view, extend_schema
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_204_NO_CONTENT
+
 
 from clients.serializers.api import clients as user_s
 
@@ -24,7 +25,6 @@ class RegistrationView(generics.CreateAPIView):
     post=extend_schema( request=user_s.ChangePasswordSerializer, summary='Смена пароля', tags=['Пользователи']),
 )
 class ChangePasswordView(APIView):
-
     def post(self, request):
         user = request.user
         serializer =user_s.ChangePasswordSerializer(
@@ -41,6 +41,7 @@ class ChangePasswordView(APIView):
     patch=extend_schema(summary='Изменить частично профиль пользователя', tags=['Пользователи']),
 )
 class MeView(generics.RetrieveUpdateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = user_s.MeListSerializer
 
