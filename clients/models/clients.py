@@ -6,7 +6,7 @@ from django.db import models
 class Client(AbstractUser):
     middle_name = models.CharField('middle_name', max_length=100, blank=True)
     sex = models.CharField('sex', max_length=3)
-    birthday = models.DateField('birthday')
+    birthday = models.DateField('birthday', null=True, default=None)
     snils = models.CharField('snils', max_length=14)
     oms = models.CharField('oms', max_length=16)
     passport_data = models.CharField('passport_data', max_length=10)

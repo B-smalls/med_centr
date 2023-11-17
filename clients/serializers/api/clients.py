@@ -63,7 +63,7 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        field = ('old_password', 'new_password')
+        fields = ('old_password', 'new_password')
 
     def validate(self, attrs):
         user = self.instance
@@ -82,7 +82,7 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
 class MeListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = {
+        fields = (
             'id',
             'first_name',
             'last_name',
@@ -95,13 +95,13 @@ class MeListSerializer(serializers.ModelSerializer):
             'email',
             'phone_number',
             'date_joined'
-        }
+        )
 
 
 class MeUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = {
+        fields = (
             'id',
             'first_name',
             'last_name',
@@ -113,7 +113,7 @@ class MeUpdateSerializer(serializers.ModelSerializer):
             'passport_data',
             'email',
             'phone_number',
-        }
+        )
 
     def update(self, instance, validated_data):
         instance = super().update(instance, validated_data)
