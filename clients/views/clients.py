@@ -22,7 +22,7 @@ class RegistrationView(generics.CreateAPIView):
 
 
 @extend_schema_view(
-    post=extend_schema( request=user_s.ChangePasswordSerializer, summary='Смена пароля', tags=['Пользователи']),
+    post=extend_schema(request=user_s.ChangePasswordSerializer, summary='Смена пароля', tags=['Пользователи']),
 )
 class ChangePasswordView(APIView):
     def post(self, request):

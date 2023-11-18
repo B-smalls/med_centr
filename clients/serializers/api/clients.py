@@ -11,6 +11,7 @@ from django.utils import timezone
 
 User = get_user_model()
 
+
 class RegistrationSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
@@ -30,13 +31,14 @@ class RegistrationSerializer(serializers.Serializer):
                 'Пользователь с такой почтой уже зарегистрирован.'
             )
         return email
+
     def validate_new_password(self, value):
         validate_password(value)
         return value
+
     def validate_password(self, value):
         validate_password(value)
         return value
-
 
     def create(self, validated_data):
         try:
@@ -72,11 +74,13 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
                 'Проверьте правильность текущего пароля'
             )
         return attrs
+
     def update(self, instance, validated_data):
         password = validated_data.pop('new_password')
         instance.set_password(password)
         instance.save()
         return instance
+
 
 class MeListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -119,6 +123,8 @@ class MeUpdateSerializer(serializers.ModelSerializer):
         return instance
 
 #Функция для генерации
+
+
 def generate_medbook_number():
     letters_part = ''.join(random.choices(string.ascii_uppercase, k=5))
     digits_part = ''.join(random.choices(string.digits, k=5))
