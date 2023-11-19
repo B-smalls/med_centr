@@ -5,7 +5,7 @@ from medservices.models.service import Service
 
 @admin.register(ServRecord)
 class ServRecordAdmin(admin.ModelAdmin):
-    list_display = ('id', 'servRecord', 'account_id', 'sshed_id')
+    list_display = ('id', 'servRecord_date', 'account_id', 'sshed_id')
 
 
 @admin.register(ServShedule)
