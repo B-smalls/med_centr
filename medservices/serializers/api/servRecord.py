@@ -8,6 +8,7 @@ from django.http import HttpResponse
 class ServRecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServRecord
+
         fields = (
             'id',
             'servRecord_date',

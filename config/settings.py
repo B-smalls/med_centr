@@ -183,7 +183,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 ######################
-# JOSER
+# DJOSER
 ######################
 
 DJOSER = {
