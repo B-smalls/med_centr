@@ -14,3 +14,4 @@ from medservices.models.service import Service
 class ServiceAllView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = service.ServiceSerializer
+    queryset = Service.objects.all()
