@@ -30,9 +30,9 @@ class SearchSheduleView(generics.ListAPIView):
     serializer_class = servShedule.SearchSheduleSerializer
 
     def get_queryset(self):
-        serv_id = self.request.query_params.get('serv_id')
+        serv_id = self.kwargs.get('serv_id')
 
-        if serv_id is not None and serv_id.isdigit():
+        if serv_id is not None and isinstance(serv_id, int):
             return ServShedule.objects.filter(serv_id=serv_id, serv_status=True)
 
         return ServShedule.objects.none()

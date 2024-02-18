@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from medservices.models.servShedule import ServShedule
-from medservices.serializers.nested import services
+from medservices.serializers.nested.services import ServiceShotSerializer
 
 
 class ServSheduleSerializer(serializers.ModelSerializer):
 
-    serv_id = services.ServiceShotSerializer()
+    serv_id = ServiceShotSerializer()
     class Meta:
         model = ServShedule
         fields = (
@@ -18,7 +18,7 @@ class ServSheduleSerializer(serializers.ModelSerializer):
 
 
 class SearchSheduleSerializer(serializers.ModelSerializer):
-
+    serv_id = ServiceShotSerializer()
     class Meta:
         model = ServShedule
         fields = (
@@ -27,3 +27,4 @@ class SearchSheduleSerializer(serializers.ModelSerializer):
             'serv_hours',
             'serv_id'
         )
+
