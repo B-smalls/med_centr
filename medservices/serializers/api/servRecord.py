@@ -22,7 +22,7 @@ class ServRecordSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         sshed_id = self.context.get('sshed_id')
         current_date = timezone.now().date()
-        print("SSSSSSS", sshed_id)
+
         try:
             with transaction.atomic():
                 # Создаем запись с указанием текущей даты, ID пользователя и sshed_id
