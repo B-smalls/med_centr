@@ -12,7 +12,9 @@ urlpatterns = [
     path('doctors/doctShedule/shedulebydoctor/<int:doctor_id>/', doctShedule.DoctSheduleByDoctView.as_view(), name='shedulebydoctor'),
     path('doctors/doctShedule/shedulebyspecializations//<int:special_id>/', doctShedule.DoctSheduleBySpecView.as_view(), name='shedulebyspecializations'),
 
-
+    path('medserv/serv/create-doct-record/', doctRecord.DoctRecordCreateView.as_view(), name='create-doct-record'),
+    path('medserv/serv/delete-doct-record/<int:pk>/', doctRecord.DoctRecordDeleteView.as_view(), name='delete-doct-record'),
+    path('medserv/serv/user-doct-record/', doctRecord.DoctRecordListView.as_view(), name='user-doct-record'),
 
 
     # path('medserv/serv/serv-list/', service.ServiceAllView.as_view(), name='serv-list'),

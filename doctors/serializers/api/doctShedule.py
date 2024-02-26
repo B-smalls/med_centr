@@ -13,6 +13,5 @@ class DoctorSheduleSerializer(serializers.ModelSerializer):
             'doc_day',
             'doct_hours',
             'doct_status',
-            'doct_status',
             'doctor_id'
         )
