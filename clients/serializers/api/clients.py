@@ -12,18 +12,33 @@ from django.utils import timezone
 User = get_user_model()
 
 
-class RegistrationSerializer(serializers.Serializer):
+class RegistrationSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
+    id = serializers.ReadOnlyField()
+    passport_data = serializers.CharField(write_only=True)
+    snils = serializers.CharField(write_only=True)
+    oms = serializers.CharField(write_only=True)
+    birthday = serializers.CharField(write_only=True)
+    sex = serializers.CharField(write_only=True)
+    middle_name = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
         fields = (
             'id',
-            'first_name',
-            'last_name',
+            'username',
             'email',
-            'password',
+            'phone_number',
+            'middle_name',
+            'sex',
+            'birthday',
+            'snils',
+            'oms',
+            'passport_data',
+            'password'
         )
+
     def validate_email(self, value):
         email = value.lower()
         if User.objects.filter(email=email).exists():
