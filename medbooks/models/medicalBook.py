@@ -8,4 +8,3 @@ class MedBook(models.Model):
 class Meta:
     verbose_name = 'Медицинская книжка'
     verbose_name_plural = 'Медицинские книжки'
-    ordering = ('card_number', )

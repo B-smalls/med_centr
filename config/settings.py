@@ -13,6 +13,9 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = env.str('ALLOWED_HOSTS', default='').split(' ')
 
+# location for download files
+MEDIA_ROOT = env.str('MEDIA_ROOT')
+MEDIA_URL = env.str('MEDIA_URL')
 
 # base
 INSTALLED_APPS = [
@@ -113,6 +116,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.FileUploadParser',
+        'rest_framework.parsers.MultiPartParser'
     ],
 
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
